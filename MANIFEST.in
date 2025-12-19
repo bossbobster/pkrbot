@@ -1,0 +1,6 @@
+include README.md
+include LICENSE
+include *.pyx
+include *.pxd
+include __init__.py
+
