@@ -23,6 +23,12 @@ deck = pkrbot.Deck()
 deck.shuffle()
 hand = deck.deal(7)
 result = pkrbot.evaluate(hand)
+
+# Use a set seed deck
+deck = pkrbot.Deck(seed=42)
+deck.shuffle()        # will use seed 42
+hand = deck.sample(7) # will use seed 42 as well
+print(pkrbot.handtype(pkrbot.evaluate(hand)))
 ```
 
 ## API
