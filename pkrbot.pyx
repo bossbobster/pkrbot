@@ -7,6 +7,7 @@
 from libc.stdint cimport uint8_t, uint16_t, int8_t, uint32_t
 cimport cython
 from libc.string cimport memset
+from random import Random
 
 # Rank and suit mappings matching eval7
 RANKS = '23456789TJQKA'
@@ -353,7 +354,6 @@ def handtype(uint32_t value):
     else:
         return "Invalid"
 
-
 class Deck:
     """
     A set of all 52 distinct cards, pregenerated to minimize overhead.
@@ -365,13 +365,18 @@ class Deck:
         hand = deck.deal(7)
         result = evaluate(hand)
     """
-    def __init__(self):
+    def __init__(self, seed=None):
         """Create a new deck with all 52 cards."""
+        if not (isinstance(seed, int) or seed is None):
+            raise ValueError("Seed must be an integer or None")
+
         self.cards = []
         for rank in RANKS:
             for suit in SUITS:
                 card = Card(rank + suit)
                 self.cards.append(card)
+
+        self.rng = Random(seed) if seed is not None else Random()
     
     def __repr__(self):
         return f"Deck({self.cards})"
@@ -384,8 +389,7 @@ class Deck:
     
     def shuffle(self):
         """Randomize the order of the cards in the deck."""
-        import random
-        random.shuffle(self.cards)
+        self.rng.shuffle(self.cards)
     
     def deal(self, n):
         """
@@ -438,8 +442,7 @@ class Deck:
         """
         if n > len(self.cards):
             raise ValueError("Insufficient cards in deck")
-        import random
-        return random.sample(self.cards, n)
+        return self.rng.sample(self.cards, n)
 
 
 
