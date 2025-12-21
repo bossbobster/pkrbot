@@ -24,13 +24,13 @@ ext = Extension(
 
 setup(
     name='pkrbot',
-    version='1.0.0',
-    description='Ultra-fast poker hand evaluation library with eval7-compatible API',
+    version='1.0.2',
+    description='Fast poker hand evaluation library with eval7-compatible API',
     long_description=long_description,
     long_description_content_type='text/markdown',
     author='Bobby Costin',
     author_email='',
-    url='',
+    url='https://github.com/bossbobster/pkrbot',
     license='MIT',
     classifiers=[
         'Development Status :: 4 - Beta',

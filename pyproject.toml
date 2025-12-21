@@ -4,13 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pkrbot"
-version = "1.0.0"
-description = "Ultra-fast poker hand evaluation library with eval7-compatible API"
+version = "1.0.2"
+description = "Fast poker hand evaluation library with eval7-compatible API"
 readme = "README.md"
 requires-python = ">=3.6"
 license = {text = "MIT"}
 authors = [
-    {name = "Bobby"}
+    {name = "Bobby Costin"}
 ]
 keywords = ["poker", "hand evaluation", "eval7", "cards", "game", "pokerbots"]
 classifiers = [
@@ -33,5 +33,5 @@ classifiers = [
 dependencies = []
 
 [project.urls]
-Homepage = "https://github.com/yourusername/pkrbot"
+Homepage = "https://github.com/bossbobster/pkrbot"
 

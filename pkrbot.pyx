@@ -446,12 +446,6 @@ class Deck:
 
 
 
-
-
-
-
-
-
 # @cython.boundscheck(False)
 # @cython.wraparound(False)
 # def evaluate(cnp.ndarray[uint8_t, ndim=1] ranks, cnp.ndarray[uint8_t, ndim=1] suits):
