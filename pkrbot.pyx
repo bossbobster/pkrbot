@@ -354,7 +354,6 @@ def handtype(uint32_t value):
     else:
         return "Invalid"
 
-# why no cdef class Deck?
 class Deck:
     """
     A set of all 52 distinct cards, pregenerated to minimize overhead.
