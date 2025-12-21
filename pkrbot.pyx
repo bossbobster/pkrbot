@@ -368,7 +368,7 @@ class Deck:
     """
     def __init__(self, seed=None):
         """Create a new deck with all 52 cards."""
-        if not isinstance(seed, [int, NoneType]):
+        if not (isinstance(seed, int) or seed is None):
             raise ValueError("Seed must be an integer or None")
 
         self.cards = []
