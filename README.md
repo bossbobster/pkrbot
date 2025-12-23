@@ -12,6 +12,7 @@ pip install pkrbot
 
 ```python
 import pkrbot
+import random
 
 # Evaluate a hand
 hand = [pkrbot.Card('As'), pkrbot.Card('Kh'), pkrbot.Card('Qd'), pkrbot.Card('Jc'), pkrbot.Card('Ts')]
@@ -25,9 +26,11 @@ hand = deck.deal(7)
 result = pkrbot.evaluate(hand)
 
 # Use a set seed deck
+rng = random.Random(42)
 deck = pkrbot.Deck(seed=42)
-deck.shuffle()        # will use seed 42
-hand = deck.sample(7) # will use seed 42 as well
+deck.shuffle()            # will use seed 42
+hand = deck.sample(7)     # will use seed 42 as well
+deck_2 = pkrbot.Deck(rng) # will use seed 42, but with persisted random state in rng
 print(pkrbot.handtype(pkrbot.evaluate(hand)))
 ```
 
