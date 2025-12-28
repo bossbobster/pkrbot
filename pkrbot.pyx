@@ -365,18 +365,22 @@ class Deck:
         hand = deck.deal(7)
         result = evaluate(hand)
     """
-    def __init__(self, seed=None):
+    def __init__(self, rng=None):
         """Create a new deck with all 52 cards."""
-        if not (isinstance(seed, int) or seed is None):
-            raise ValueError("Seed must be an integer or None")
-
         self.cards = []
         for rank in RANKS:
             for suit in SUITS:
                 card = Card(rank + suit)
                 self.cards.append(card)
 
-        self.rng = Random(seed) if seed is not None else Random()
+        if isinstance(rng, Random):
+            self.rng = rng
+        elif isinstance(rng, int):
+            self.rng = Random(rng)
+        elif rng is None:
+            self.rng = Random()
+        else:
+            raise TypeError("rng must be an instance of Random, integer, or None")
     
     def __repr__(self):
         return f"Deck({self.cards})"
