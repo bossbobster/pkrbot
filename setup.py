@@ -24,7 +24,7 @@ ext = Extension(
 
 setup(
     name='pkrbot',
-    version='1.0.5',
+    version='1.0.6',
     description='Fast poker hand evaluation library with eval7-compatible API',
     long_description=long_description,
     long_description_content_type='text/markdown',
