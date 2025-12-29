@@ -4,10 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pkrbot"
-version = "1.0.2"
+version = "1.0.5"
 description = "Fast poker hand evaluation library with eval7-compatible API"
 readme = "README.md"
-requires-python = ">=3.6"
+requires-python = ">=3.8"
 license = {text = "MIT"}
 authors = [
     {name = "Bobby Costin"}

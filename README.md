@@ -27,7 +27,7 @@ result = pkrbot.evaluate(hand)
 
 # Use a set seed deck
 rng = random.Random(42)
-deck = pkrbot.Deck(seed=42)
+deck = pkrbot.Deck(42)
 deck.shuffle()            # will use seed 42
 hand = deck.sample(7)     # will use seed 42 as well
 deck_2 = pkrbot.Deck(rng) # will use seed 42, but with persisted random state in rng

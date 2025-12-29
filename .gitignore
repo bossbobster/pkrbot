@@ -1,6 +1,7 @@
 # build files
 build/
 dist/
+dist_test/
 *.egg-info/
 *.so
 *.c

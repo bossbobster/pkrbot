@@ -24,7 +24,7 @@ ext = Extension(
 
 setup(
     name='pkrbot',
-    version='1.0.2',
+    version='1.0.5',
     description='Fast poker hand evaluation library with eval7-compatible API',
     long_description=long_description,
     long_description_content_type='text/markdown',
@@ -37,8 +37,6 @@ setup(
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: 3.10',
@@ -50,7 +48,7 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
     keywords='poker, hand evaluation, eval7, cards, game',
-    python_requires='>=3.6',
+    python_requires='>=3.8',
     install_requires=[
         'Cython>=0.29.0',
     ],
