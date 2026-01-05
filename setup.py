@@ -3,7 +3,7 @@ from Cython.Build import cythonize
 import sys
 
 # Platform-specific compiler flags
-if sys.platform == 'win32':
+if sys.platform.startswith('win'):
     extra_compile_args = [
         '/O2',           # Maximum optimization (speed)
         '/Oi',           # Generate intrinsic functions
