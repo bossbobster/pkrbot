@@ -1,10 +1,10 @@
 [build-system]
-requires = ["setuptools>=40.8.0", "wheel", "Cython>=0.29.0"]
+requires = ["setuptools>=61", "wheel", "Cython>=0.29.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "pkrbot"
-version = "1.0.8"
+version = "1.0.9"
 description = "Fast poker hand evaluation library with eval7-compatible API"
 readme = "README.md"
 requires-python = ">=3.8"
@@ -18,14 +18,13 @@ classifiers = [
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.6",
-    "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "Programming Language :: Cython",
     "Topic :: Games/Entertainment",
     "Topic :: Software Development :: Libraries :: Python Modules",

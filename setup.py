@@ -22,46 +22,4 @@ ext = Extension(
     extra_link_args=[],
 )
 
-setup(
-    name='pkrbot',
-    version='1.0.8',
-    description='Fast poker hand evaluation library with eval7-compatible API',
-    long_description=long_description,
-    long_description_content_type='text/markdown',
-    author='Bobby Costin',
-    author_email='',
-    url='https://github.com/bossbobster/pkrbot',
-    license='MIT',
-    classifiers=[
-        'Development Status :: 4 - Beta',
-        'Intended Audience :: Developers',
-        'License :: OSI Approved :: MIT License',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.8',
-        'Programming Language :: Python :: 3.9',
-        'Programming Language :: Python :: 3.10',
-        'Programming Language :: Python :: 3.11',
-        'Programming Language :: Python :: 3.12',
-        'Programming Language :: Python :: 3.13',
-        'Programming Language :: Cython',
-        'Topic :: Games/Entertainment',
-        'Topic :: Software Development :: Libraries :: Python Modules',
-    ],
-    keywords='poker, hand evaluation, eval7, cards, game',
-    python_requires='>=3.8',
-    install_requires=[
-        'Cython>=0.29.0',
-    ],
-    ext_modules=cythonize(
-        [ext],
-        compiler_directives={
-            'language_level': '3',
-            'boundscheck': False,
-            'wraparound': False,
-            'cdivision': True,
-            'initializedcheck': False,
-        }
-    ),
-    py_modules=['pkrbot'],
-    zip_safe=False,
-)
+setup(ext_modules=[ext])
