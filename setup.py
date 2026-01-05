@@ -1,18 +1,8 @@
 from setuptools import setup, Extension
 from Cython.Build import cythonize
-import sys
-import os
-
-# Read README for long description
-this_directory = os.path.abspath(os.path.dirname(__file__))
-try:
-    with open(os.path.join(this_directory, 'README.md'), encoding='utf-8') as f:
-        long_description = f.read()
-except FileNotFoundError:
-    long_description = 'Fast poker hand evaluation library'
 
 ext = Extension(
-    'pkrbot',
+    'pkrbot.pkrbot',  # Build as module within package
     ['pkrbot.pyx'],
     extra_compile_args=[
         '-O3',
@@ -22,4 +12,17 @@ ext = Extension(
     extra_link_args=[],
 )
 
-setup(ext_modules=[ext])
+setup(
+    packages=['pkrbot'],  # Declare pkrbot as a package
+    package_dir={'pkrbot': '.'},  # Package contents are in current directory
+    ext_modules=cythonize(
+        [ext],
+        compiler_directives={
+            'language_level': '3',
+            'boundscheck': False,
+            'wraparound': False,
+            'cdivision': True,
+            'initializedcheck': False,
+        }
+    ),
+)
