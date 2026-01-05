@@ -1,36 +1,3 @@
 [build-system]
 requires = ["setuptools>=61", "wheel", "Cython>=0.29.0"]
 build-backend = "setuptools.build_meta"
-
-[project]
-name = "pkrbot"
-version = "1.0.14"
-description = "Fast poker hand evaluation library with eval7-compatible API"
-readme = "README.md"
-requires-python = ">=3.8"
-license = {text = "MIT"}
-authors = [
-    {name = "Bobby Costin"}
-]
-keywords = ["poker", "hand evaluation", "eval7", "cards", "game", "pokerbots"]
-classifiers = [
-    "Development Status :: 4 - Beta",
-    "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
-    "Programming Language :: Python :: 3.13",
-    "Programming Language :: Python :: 3.14",
-    "Programming Language :: Cython",
-    "Topic :: Games/Entertainment",
-    "Topic :: Software Development :: Libraries :: Python Modules",
-]
-dependencies = []
-
-[project.urls]
-Homepage = "https://github.com/bossbobster/pkrbot"
-
