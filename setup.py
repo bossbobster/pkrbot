@@ -2,7 +2,7 @@ from setuptools import setup, Extension
 from Cython.Build import cythonize
 
 ext = Extension(
-    'pkrbot',  # Build as top-level extension module (no package)
+    'pkrbot',
     ['pkrbot.pyx'],
     extra_compile_args=[
         '-O3',
@@ -13,6 +13,7 @@ ext = Extension(
 )
 
 setup(
+    # Just the extension, pyproject.toml has the metadata
     ext_modules=cythonize(
         [ext],
         compiler_directives={
@@ -23,5 +24,7 @@ setup(
             'initializedcheck': False,
         }
     ),
-    zip_safe=False,
+    # Explicitly set name and version so setuptools uses them
+    name='pkrbot',
+    version='1.0.14',
 )
