@@ -2,8 +2,8 @@ from setuptools import setup, Extension
 from Cython.Build import cythonize
 
 ext = Extension(
-    'pkrbot._pkrbot',  # Build as private extension module
-    ['pkrbot.pyx'],  # Relative path, not absolute
+    'pkrbot',  # Build as top-level extension module (no package)
+    ['pkrbot.pyx'],
     extra_compile_args=[
         '-O3',
         '-ffast-math', '-funroll-loops', '-finline-functions',
@@ -13,9 +13,6 @@ ext = Extension(
 )
 
 setup(
-    packages=['pkrbot'],
-    package_dir={'pkrbot': '.'},
-    package_data={'pkrbot': ['*.pyx', '*.pxd']},
     ext_modules=cythonize(
         [ext],
         compiler_directives={
