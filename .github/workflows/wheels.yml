@@ -11,17 +11,16 @@ jobs:
     name: Build wheels on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
 
     steps:
-      - name: Check out code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Python for cibuildwheel driver
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
-          python-version: "3.13"
+          python-version: "3.12"
 
       - name: Install build tools
         run: |
@@ -31,19 +30,48 @@ jobs:
       - name: Build wheels
         env:
           CIBW_BUILD: "cp38-* cp39-* cp310-* cp311-* cp312-* cp313-* cp314-*"
-          # macOS: build universal2 wheels (one wheel works on Intel + Apple Silicon)
           CIBW_ARCHS_MACOS: "universal2"
-          # Linux/Windows: default arch set by cibuildwheel (x86_64)
         run: |
           python -m cibuildwheel --output-dir dist
 
-      - name: Build sdist (only once, on Linux)
+      # Build sdist once (only on Linux)
+      - name: Build sdist
         if: matrix.os == 'ubuntu-latest'
         run: |
-          python -m build --sdist
+          python -m build --sdist --outdir dist
+
+      - name: Upload dist artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-${{ matrix.os }}
+          path: dist/*
+          if-no-files-found: error
+
+  publish:
+    name: Publish to PyPI
+    runs-on: ubuntu-latest
+    needs: build-wheels
+    if: startsWith(github.ref, 'refs/tags/')
+
+    steps:
+      - name: Download all dist artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: dist-*
+          path: dist
+          merge-multiple: true
+
+      - name: Show what will be uploaded
+        run: |
+          ls -lah dist
+          python - << 'PY'
+          import os
+          files = sorted(os.listdir("dist"))
+          print("\n".join(files))
+          PY
 
       - name: Publish to PyPI
-        if: startsWith(github.ref, 'refs/tags/')
         uses: pypa/gh-action-pypi-publish@v1.10.3
         with:
           password: ${{ secrets.PYPI_API_TOKEN }}
+          packages-dir: dist
