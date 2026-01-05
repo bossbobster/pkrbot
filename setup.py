@@ -15,7 +15,7 @@ ext = Extension(
     'pkrbot',
     ['pkrbot.pyx'],
     extra_compile_args=[
-        '-O3', '-march=native', '-mtune=native',
+        '-O3',
         '-ffast-math', '-funroll-loops', '-finline-functions',
         '-fomit-frame-pointer', '-DNDEBUG',
     ],
@@ -24,7 +24,7 @@ ext = Extension(
 
 setup(
     name='pkrbot',
-    version='1.0.6',
+    version='1.0.7',
     description='Fast poker hand evaluation library with eval7-compatible API',
     long_description=long_description,
     long_description_content_type='text/markdown',
