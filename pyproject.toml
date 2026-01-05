@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pkrbot"
-version = "1.0.19"
+version = "1.1.0"
 description = "Fast poker hand evaluation library with eval7-compatible API"
 readme = "README.md"
 requires-python = ">=3.8"
