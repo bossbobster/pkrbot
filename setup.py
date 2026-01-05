@@ -1,13 +1,9 @@
-from setuptools import setup, Extension, find_packages
+from setuptools import setup, Extension
 from Cython.Build import cythonize
-import os
-
-# Ensure we're in the right directory
-here = os.path.abspath(os.path.dirname(__file__))
 
 ext = Extension(
     'pkrbot._pkrbot',  # Build as private extension module
-    [os.path.join(here, 'pkrbot.pyx')],
+    ['pkrbot.pyx'],  # Relative path, not absolute
     extra_compile_args=[
         '-O3',
         '-ffast-math', '-funroll-loops', '-finline-functions',
